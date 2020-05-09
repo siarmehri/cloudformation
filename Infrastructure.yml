@@ -35,3 +35,4 @@ Parameters:
         Description: Please enter the IP range (CIDR notation) for the private subnet in second Availabilty Zone
         Type: String
         Default: 10.0.3.0/24
+    
