@@ -35,4 +35,13 @@ Parameters:
         Description: Please enter the IP range (CIDR notation) for the private subnet in second Availabilty Zone
         Type: String
         Default: 10.0.3.0/24
-    
+
+Resources:
+    VPC:
+        Type: AWS::EC2::VPC
+        Properties:
+            CidrBlock: !Ref VpcCIDR
+            EnableDnsHostnames: true
+            Tags:
+                - Key: Name
+                    Value: !Ref EnvironmentName
