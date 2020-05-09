@@ -6,12 +6,7 @@ aws --profile devopspractice cloudformation create-stack --stack-name myfirsttes
 
 ## To run infrastructure.yml
 
-aws --profile devopspractice \\
-cloudformation create-stack \\
---stack-name demo-infra \\
---region eu-west-2 \\
---template-body file://infrastructure.yml \\
---parameters file://infrastructure-params.json
+aws --profile devopspractice cloudformation create-stack --stack-name demo-infra --region eu-west-2 --template-body file://infrastructure.yml --parameters file://infrastructure-params.json
 
 ## To run with shell script
 ./create-stack.sh demo-infra infrastructure.yml infrastructure-params.json 
