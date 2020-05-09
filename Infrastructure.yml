@@ -44,14 +44,14 @@ Resources:
             EnableDnsHostnames: true
             Tags:
                 - Key: Name
-                    Value: !Ref EnvironmentName
+                  Value: !Ref EnvironmentName
     
     InternetGateway:
         Type: AWS::EC2::InternetGateway
         Properties:
             Tags:
                 - Key: Name
-                    Value: !Ref EnvironmentName
+                  Value: !Ref EnvironmentName
                     
     InternetGatewayAttachment:
         Type: AWS::EC2::VPCGatewayAttachment
@@ -68,7 +68,7 @@ Resources:
             MapPublicIpOnLaunch: false
             Tags:
                 - Key: Name
-                    Value: !Sub ${EnvironmentName} Public Subnet (AZ1)
+                  Value: !Sub ${EnvironmentName} Public Subnet (AZ1)
             
     PublicSubnet2:
         Type: AWS::EC2::Subnet
@@ -79,7 +79,7 @@ Resources:
             MapPublicIpOnLaunch: false
             Tags:
                 - Key: Name
-                    Value: !Sub ${EnvironmentName} Public Subnet (AZ2)
+                  Value: !Sub ${EnvironmentName} Public Subnet (AZ2)
             
     PrivateSubnet1:
         Type: AWS::EC2::Subnet
@@ -90,7 +90,7 @@ Resources:
             MapPublicIpOnLaunch: false
             Tags:
                 - Key: Name
-                    Value: !Sub ${EnvironmentName} Private Subnet (AZ1)
+                  Value: !Sub ${EnvironmentName} Private Subnet (AZ1)
             
     PrivateSubnet2:
         Type: AWS::EC2::Subnet
@@ -101,7 +101,7 @@ Resources:
             MapPublicIpOnLaunch: false
             Tags:
                 - Key: Name
-                    Value: !Sub ${EnvironmentName} Private Subnet (AZ2)
+                  Value: !Sub ${EnvironmentName} Private Subnet (AZ2)
     
     NatGateway1EIP:
         Type: AWS::EC2::EIP
@@ -110,7 +110,7 @@ Resources:
             Domain: vpc
             Tags:
                 - Key: Name
-                    Value: !Sub ${EnvironmentName} EIP1
+                  Value: !Sub ${EnvironmentName} EIP1
     
     NatGateway2EIP:
         Type: AWS::EC2::EIP
@@ -119,7 +119,7 @@ Resources:
             Domain: vpc
             Tags:
                 - Key: Name
-                    Value: !Sub ${EnvironmentName} EIP2
+                  Value: !Sub ${EnvironmentName} EIP2
 
     NatGateway1:
         Type: AWS::EC2::NatGateway
@@ -128,7 +128,7 @@ Resources:
             SubnetId: !Ref PublicSubnet1
             Tags:
                 - Key: Name
-                    Value: !Sub ${EnvironmentName} NatGateway1
+                  Value: !Sub ${EnvironmentName} NatGateway1
     
     NatGateway2:
         Type: AWS::EC2::NatGateway
@@ -137,7 +137,7 @@ Resources:
             SubnetId: !Ref PublicSubnet2
             Tags:
                 - Key: Name
-                    Value: !Sub ${EnvironmentName} NatGateway2
+                  Value: !Sub ${EnvironmentName} NatGateway2
 
     PublicRouteTable:
         Type: AWS::EC2::RouteTable
@@ -145,7 +145,7 @@ Resources:
             VpcId: !Ref VPC
             Tags:
                 - Key: Name
-                    Value: !Sub ${EnvironmentName} Public Routes
+                  Value: !Sub ${EnvironmentName} Public Routes
 
     DefaultPublicRoute:
         Type: AWS::EC2::Route
