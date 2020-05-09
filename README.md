@@ -1,2 +1,2 @@
-# cloudformation
+# CloudFormation
 This is just learning repo...
