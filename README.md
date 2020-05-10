@@ -18,10 +18,8 @@ aws --profile devopspractice cloudformation update-stack --stack-name demo-infra
 ./update-stack.sh demo-infra infrastructure.yml infrastructure-params.json 
 
 ## To delete stack cli
-### Infrastructure
-aws --profile devopspractice cloudformation delete-stack --stack-name demo-infra
-### Servers
-aws --profile devopspractice cloudformation delete-stack --stack-name demo-servers
+* Infrastructure: aws --profile devopspractice cloudformation delete-stack --stack-name demo-infra
+* Servers: aws --profile devopspractice cloudformation delete-stack --stack-name demo-servers
 
 ## To delete stack with shell script
 ./delete-stack.sh demo-infra
