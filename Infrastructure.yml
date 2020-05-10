@@ -9,7 +9,7 @@ Parameters:
     EnvironmentName:
         Description: An environment name that will be prefixed to resource names
         Type: String
-        Default: MyInfrastructure
+        Default: DevOpsProject
     
     VpcCIDR:
         Description: Please enter the IP range (CIDR notation) for this VPC
@@ -271,7 +271,7 @@ Outputs:
         Export:
             Name: !Sub ${EnvironmentName}-PRI2-SN
     
-            
+
 
 
     

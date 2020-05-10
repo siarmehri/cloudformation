@@ -1,7 +1,7 @@
 [
     {
         "ParameterKey": "EnvironmentName",
-        "ParameterValue": "WebInfrastructure"
+        "ParameterValue": "DevOpsProject"
     },
     {
         "ParameterKey": "VpcCIDR",
