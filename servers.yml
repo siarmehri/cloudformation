@@ -55,20 +55,20 @@ Resources:
         Type: AWS::AutoScaling::LaunchConfiguration
         Properties:
             UserData:
-            Fn::Base64: !Sub |
-                #!/bin/bash
-                # Install docker
-                apt-get update
-                apt-get install -y apt-transport-https ca-certificates curl software-properties-common
-                curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-                add-apt-repository \
-                "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-                $(lsb_release -cs) \
-                stable"
-                apt-get update
-                apt-get install -y docker-ce
-                usermod -aG docker ubuntu
-                docker run -p 8080:8080 tomcat:8.0
+                Fn::Base64: !Sub |
+                    #!/bin/bash
+                    # Install docker
+                    apt-get update
+                    apt-get install -y apt-transport-https ca-certificates curl software-properties-common
+                    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+                    add-apt-repository \
+                    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+                    $(lsb_release -cs) \
+                    stable"
+                    apt-get update
+                    apt-get install -y docker-ce
+                    usermod -aG docker ubuntu
+                    docker run -p 8080:8080 tomcat:8.0
             ImageId: ami-0eb89db7593b5d434
             KeyName: that-one
             SecurityGroups:
@@ -86,9 +86,7 @@ Resources:
             - Fn::ImportValue: 
                 !Sub "${EnvironmentName}-PRIV-NETS"
             LaunchConfigurationName:
-            Ref: WebAppLaunchConfig
+            - Ref: WebAppLaunchConfig
             MinSize: '3'
             MaxSize: '5'
-            TargetGroupARNs:
-            - Ref: WebAppTargetGroup
     
