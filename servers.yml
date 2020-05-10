@@ -1,0 +1,59 @@
+Description: >
+    This template deploys a VPC, with a pair of public and private subnets spread 
+    across two Availabilty Zones. It deploys an Internet Gateway, with a default 
+    route on the public subnets. It deploys a pair of NAT Gateways (one in each AZ), 
+    and default routes for them in the private subnets.
+
+Parameters:
+
+    EnvironmentName:
+        Description: An environment name that will be prefixed to resource names
+        Type: String
+        Default: DevOpsProject
+
+Resources:
+    LBSecGroup:
+        Type: AWS::EC2::SecurityGroup
+        Properties:
+            GroupDescription: Allow http to load balancer
+            VpcId:
+                Fn::ImportValue:
+                    !Sub "${EnvironmentName}-VPCID"
+            SecurityGroupIngress:
+            - IpProtocol: tcp
+              FromPort: 80
+              ToPort: 80
+              CidrIp: 0.0.0.0/0
+            SecurityGroupEgress:
+            - IpProtocol: tcp
+              FromPort: 80
+              ToPort: 80
+              CidrIp: 0.0.0.0/0
+    WebServerSecGroup:
+        Type: AWS::EC2::SecurityGroup
+        Properties:
+            GroupDescription: Allow http to our hosts and ssh local only
+            VpcId:
+                Fn::ImportValue:
+                    !Sub "${EnvironmentName}-VPCID"
+            SecurityGroupIngress:
+            - IpProtocol: tcp
+              FromPort: 8080
+              ToPort: 8080
+              CidrIp: 0.0.0.0/0
+            - IpProtocol: tcp
+              FromPort: 22
+              ToPort: 22
+              CidrIp: 0.0.0.0/0
+            SecurityGroupEgress:
+            - IpProtocol: tcp
+              FromPort: 0
+              ToPort: 65535
+              CidrIp: 0.0.0.0/0
+              
+              
+
+
+
+        
+            
